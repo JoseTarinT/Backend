@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 
 app.get('/result', (req, res) => {
-    console.log('Hello')
+    res.json('Hello')
 })
 
 app.get('/result', (req, res) => {
