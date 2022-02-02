@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 app.use(cors())
 
-app.get('/result', (req, res) => {
+app.get('/', (req, res) => {
     res.json('Hello')
 })
 
