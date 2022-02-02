@@ -1,4 +1,3 @@
-const Port = process.env.PORT || 3090
 const express = require("express")
 const { Cluster } = require("puppeteer-cluster")
 const cors = require('cors')
@@ -63,4 +62,4 @@ app.get('/tides', (req, res) => {
 
 })
 
-app.listen(Port, () => console.log(`server running on PORT ${Port}`))
+app.listen(process.env.PORT || 3090, () => console.log(`server running on PORT ${process.env.PORT || 3090}`))
