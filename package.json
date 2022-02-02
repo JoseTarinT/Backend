@@ -4,7 +4,7 @@
   "description": "Website created to find protected beaches from the wind in Merimbula, Pambula and Tura.*",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
