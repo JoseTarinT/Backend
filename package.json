@@ -1,0 +1,28 @@
+{
+  "name": "protected-beaches",
+  "version": "1.0.0",
+  "description": "Website created to find protected beaches from the wind in Merimbula, Pambula and Tura.*",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseTarinT/protected-beaches.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseTarinT/protected-beaches/issues"
+  },
+  "homepage": "https://github.com/JoseTarinT/protected-beaches#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "puppeteer-cluster": "^0.23.0"
+  },
+  "devDependencies": {}
+}
