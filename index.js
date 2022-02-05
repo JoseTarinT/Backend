@@ -10,10 +10,10 @@ app.get('/', (req, res) => {
 })
 
 app.get('/result', (req, res) => {
-    async function scrapeTemperature(url) {
+    async function scrapeTemperature() {
         const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
-        const page = await browser.newPage('https://tides4fishing.com/au/new-south-wales/merimbula#_water_temp');
-        await page.goto(url);
+        const page = await browser.newPage();
+        await page.goto('https://tides4fishing.com/au/new-south-wales/merimbula#_water_temp');
     
         const tmp = await page.evaluate(() => {
             return Array.from(document.querySelectorAll('#c_grafico_temp_agua_txt_grados_agua_actual strong')).map(x => x.textContent)
@@ -21,7 +21,7 @@ app.get('/result', (req, res) => {
         });
         
         //console.log({watrTemp: tmp[0]})
-        res.json({watrTemp: tmp[0]})
+        res.json(tmp[0])
         await browser.close()
     }
 
