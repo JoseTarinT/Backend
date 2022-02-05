@@ -35,30 +35,23 @@ app.get('/result', (req, res) => {
 
 app.get('/tides', (req, res) => {
 
-    (async () => {
-        const cluster = await Cluster.launch({
-            concurrency: Cluster.CONCURRENCY_CONTEXT,
-            maxConcurrency: 2,
-        })
+    async function scrapeTides(url) {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(url);
 
-        //Define functions
-        const tides = async ({ page, data: url }) => {
-            await page.goto(url);
-            const tide = await page.evaluate(() => {
-                return Array.from(document.querySelectorAll('#tides-today > p')).map(x => x.textContent)
-            
-            });
+        const tide = await page.evaluate(() => {
+            return Array.from(document.querySelectorAll('#tides-today > p')).map(x => x.textContent)
+        
+        });
 
-            const newTides = tide[0].replace(/,/g, ".")
-            res.json(newTides)
-        }
+        
+        console.log(tide[0])
+        res.json(tide[0])
+        browser.close()
+    }
 
-        //Get the data
-        cluster.queue('https://www.tidetime.org/australia-pacific/australia/merimbula.htm', tides);
-
-        await cluster.idle();
-        await cluster.close();
-    })();
+    scrapeTides('https://www.tidetime.org/australia-pacific/australia/merimbula.htm')
 
 })
 
