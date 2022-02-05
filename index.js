@@ -35,10 +35,10 @@ app.get('/result', (req, res) => {
 
 app.get('/tides', (req, res) => {
 
-    async function scrapeTides(url) {
+    async function scrapeTides() {
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        await page.goto(url);
+        await page.goto('https://www.tidetime.org/australia-pacific/australia/merimbula.htm');
 
         const tide = await page.evaluate(() => {
             return Array.from(document.querySelectorAll('#tides-today > p')).map(x => x.textContent)
@@ -46,12 +46,12 @@ app.get('/tides', (req, res) => {
         });
 
         
-        console.log(tide[0])
+        //console.log(tide[0])
         res.json(tide[0])
-        browser.close()
+        await browser.close()
     }
 
-    scrapeTides('https://www.tidetime.org/australia-pacific/australia/merimbula.htm')
+    scrapeTides()
 
 })
 
