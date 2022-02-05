@@ -1,4 +1,5 @@
 const express = require("express")
+const puppeteer = require('puppeteer')
 const { Cluster } = require("puppeteer-cluster")
 const cors = require('cors')
 const app = express()
