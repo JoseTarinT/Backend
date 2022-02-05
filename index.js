@@ -17,7 +17,6 @@ app.get('/result', (req, res) => {
     
         const tmp = await page.evaluate(() => {
             return Array.from(document.querySelectorAll('#c_grafico_temp_agua_txt_grados_agua_actual strong')).map(x => x.textContent)
-            
         });
         
         //console.log({watrTemp: tmp[0]})
@@ -37,7 +36,6 @@ app.get('/tides', (req, res) => {
 
         const tide = await page.evaluate(() => {
             return Array.from(document.querySelectorAll('#tides-today > p')).map(x => x.textContent)
-        
         });
 
         
