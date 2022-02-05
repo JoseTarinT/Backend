@@ -37,7 +37,7 @@ app.get('/result', (req, res) => {
 app.get('/tides', (req, res) => {
 
     async function scrapeTides() {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
         const page = await browser.newPage();
         await page.goto('https://www.tidetime.org/australia-pacific/australia/merimbula.htm');
 
