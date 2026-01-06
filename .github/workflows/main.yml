@@ -1,0 +1,11 @@
+name: Main Workflow
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run my code
+        run: node index.js
+        env:
+          # This maps the GitHub Variable to process.env.API
+          API: ${{ vars.API }}
