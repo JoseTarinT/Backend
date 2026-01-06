@@ -14,10 +14,10 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./Backend
+        working-directory: protected-beaches-backend/Backend
 
       - name: Run my code
         run: node index.js
-        working-directory: ./Backend
+        working-directory: protected-beaches-backend/Backend
         env:
           API: ${{ vars.API }}
